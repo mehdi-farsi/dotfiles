@@ -1,0 +1,50 @@
+[user]
+	email = mehdifarsi.pro@gmail.com
+	name = Mehdi FARSI
+[core]
+	excludesfile = /Users/mehdi/.gitignore_global
+
+  	# Tell Git which whitespace problems it should recognize, namely any whitespace at the end of a line, as well as mixed spaces and tabs
+  	whitespace = trailing-space,space-before-tab
+
+  	# safe rebase on os x 10.7+
+  	# see: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+  	trustctime = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[branch]
+	# When branching off a remote branch, automatically let the local branch track the remote branch
+  	autosetupmerge = true
+[push]
+	default = simple
+[pull]
+	default = simple
+[rerere]
+	# Enable the recording of resolved conflicts, so that identical hunks can be resolved automatically later on.
+  	enabled = true
+[color]
+	ui = auto
+  	diff = auto
+
+[alias]
+	st = status
+  	ci = commit
+  	br = branch
+  	co = checkout
+  	df = diff
+  	lg = log -p
+  	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  	ls = ls-files
+  	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+  	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+  	diffstat= diff --stat -r
+  	spu= !git stash && git pull && git stash pop
+  	cop= "!sh -c 'git checkout $1 && git pull' -"
+
